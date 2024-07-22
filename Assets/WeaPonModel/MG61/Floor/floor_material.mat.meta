@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 381c235121b5b1c4c96efcc46d636b22
+timeCreated: 1507236178
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 91261
+  packageName: PBR low poly Magine Gun MG61
+  packageVersion: 1.0
+  assetPath: Assets/mg61/Floor/floor_material.mat
+  uploadId: 205602

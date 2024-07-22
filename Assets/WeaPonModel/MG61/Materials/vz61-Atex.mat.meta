@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 287a87797394827419f223850af26aa2
+timeCreated: 1495619326
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 91261
+  packageName: PBR low poly Magine Gun MG61
+  packageVersion: 1.0
+  assetPath: Assets/mg61/Materials/vz61-Atex.mat
+  uploadId: 205602
