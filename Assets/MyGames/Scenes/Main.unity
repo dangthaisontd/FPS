@@ -24851,7 +24851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10943389, g: 0.102207124, b: 0.102207124, a: 1}
+  m_Color: {r: 0.5320754, g: 0.019074326, b: 0.087214865, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -32579,6 +32579,7 @@ GameObject:
   - component: {fileID: 5866666021271135010}
   - component: {fileID: 5866666021271135013}
   - component: {fileID: 5866666021271135012}
+  - component: {fileID: 5866666021271135014}
   m_Layer: 0
   m_Name: EnemyAttack
   m_TagString: Enemy
@@ -40875,6 +40876,21 @@ MonoBehaviour:
   MaxHealth: 100
   isEnemyDead: 0
   maxAnimation: 4
+--- !u!114 &5866666021271135014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148726096865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32edee3e428e1dc43a4e9155969f3891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageHands:
+  - {fileID: 1818893227}
+  - {fileID: 108487615}
 --- !u!33 &5895631616356561126
 MeshFilter:
   m_ObjectHideFlags: 0

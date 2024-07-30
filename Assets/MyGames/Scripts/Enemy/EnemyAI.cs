@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [AddComponentMenu("DangSon/EnemyAI")]
 public class EnemyAI : MonoBehaviour
 {
+    [Header("Waypoint")]
     public Transform[] wayPoint;
     public Transform player;
     public float detectionRange = 10f;
@@ -28,7 +29,7 @@ public class EnemyAI : MonoBehaviour
         animator = GetComponent<Animator>();
         GoToNextWayPoint();
         IsRuningId = Animator.StringToHash("IsRuning");
-        IsAttackId = Animator.StringToHash("IsAttack");
+        IsAttackId = Animator.StringToHash("IsAttack");   
     }
     // Update is called once per frame
     void Update()
