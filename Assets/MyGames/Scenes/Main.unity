@@ -40863,7 +40863,7 @@ Transform:
   m_GameObject: {fileID: 1082271957985263802}
   serializedVersion: 2
   m_LocalRotation: {x: 0.03772343, y: -0.20153838, z: 0.005008906, w: 0.97874117}
-  m_LocalPosition: {x: 0.0041799545, y: 0.7323985, z: -0.034611702}
+  m_LocalPosition: {x: 0.0041799545, y: 0.502, z: -0.034611702}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41247,7 +41247,6 @@ MonoBehaviour:
   attackRange: 10
   faceSpeedPlayer: 100
   speedAgent: 2
-  stopDistance: 10
   bulletPrefabs: {fileID: 7441976651583077582, guid: 66f9bdc29fb815d45ba8e0949fd2ab6f, type: 3}
   bulletSpam: {fileID: 369846368}
   speedBullet: 20
@@ -41380,7 +41379,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2.3
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Center: {x: 0, y: 1.16, z: 0}
 --- !u!114 &5866666021271135012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41403,7 +41402,7 @@ MonoBehaviour:
   detectionRange: 10
   attackRange: 2
   faceSpeedPlayer: 100
-  speedAgent: 2
+  speedAgent: 0.5
   stopDistance: 2
 --- !u!114 &5866666021271135013
 MonoBehaviour:
@@ -42172,7 +42171,7 @@ Transform:
   m_GameObject: {fileID: 3259153979138560261}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2618121, z: 0}
+  m_LocalPosition: {x: 0, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

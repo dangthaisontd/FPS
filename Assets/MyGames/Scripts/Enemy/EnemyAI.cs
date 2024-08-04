@@ -69,7 +69,7 @@ public class EnemyAI : MonoBehaviour
         { 
             
             animator.SetBool(IsRuningId,true);
-            Invoke("Run",0.5f);
+            Invoke("Run",0.1f);
         }
         FacePlayer();
     }
