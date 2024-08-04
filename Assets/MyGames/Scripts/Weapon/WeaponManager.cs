@@ -28,10 +28,20 @@ public class WeaponManager : MonoBehaviour
     public int totalRifeAmmo = 0;
     public int totalPistolAmmo = 0;
     public int MaxTotalAmmo = 200;
+    [Header("Grenade")]
+    public float throwFore = 40f;
+    public GameObject grenadePrefabs;
+    public Transform throwableSpwam;
+    public float forceMultipler = 0;
+    public float forceMultipleLimit = 2f;
+    public int granedeCount = 0;
+    public Throwable.ThrowableType equippedLethalType;
+
     // Start is called before the first frame update
     void Start()
     {
         activeWeaponSlot = weaponSlot[0];
+        
     }
 
     // Update is called once per frame
@@ -52,6 +62,7 @@ public class WeaponManager : MonoBehaviour
         {
             Weapon currentWeapon = activeWeaponSlot.GetComponentInChildren<Weapon>();
             currentWeapon.isActiveWeapon = true;
+            
         }
     }
     void GetKey()
@@ -63,6 +74,34 @@ public class WeaponManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SwitchActiveWeaponSlot(1);
+        }
+        if (Input.GetKey(KeyCode.G))
+        {
+            forceMultipler += Time.deltaTime;
+            if (forceMultipler > forceMultipleLimit)
+            {
+                forceMultipler = forceMultipleLimit;
+            }
+            if (granedeCount > 0)
+            {
+                HubManager.Instance.UpdateSlideUI(forceMultipler * 50);
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.G))
+        {
+            if (granedeCount > 0)
+            {
+                ThrowGrenade();
+            }
+            forceMultipler = 0;
+            if (granedeCount > 0)
+            {
+                HubManager.Instance.UpdateSlideUI(forceMultipler * 50);
+            }
+            else
+            {
+                HubManager.Instance.UpdateSlideUI(0);
+            }
         }
     }
     void ActiveWeaponStart()
@@ -164,5 +203,51 @@ public class WeaponManager : MonoBehaviour
                 break;
         }
 
+    }
+    //throw 
+    public void PickupThrowable(Throwable throwable)
+    {
+        switch (throwable.throwableType)
+        {
+            case Throwable.ThrowableType.grenade:
+                // PickUpGrenade();
+                PickUpThrowableAssetgrenade(Throwable.ThrowableType.grenade);
+                break;
+        }
+    }
+
+    private void PickUpThrowableAssetgrenade(Throwable.ThrowableType lethal)
+    {
+        if (equippedLethalType == lethal || equippedLethalType == Throwable.ThrowableType.None)
+        {
+            equippedLethalType = lethal;
+            if (granedeCount < 2)
+            {
+                granedeCount += 1;
+                Destroy(InteractiveManager.Instance.hoveredThrowable.gameObject);
+                HubManager.Instance.UpdateThrowablesUI();
+            }
+        }
+
+    }
+    private void ThrowGrenade()
+    {
+        GameObject lethalPrefabs = GetThrowablePrefabs();
+        GameObject throwable = Instantiate(lethalPrefabs, throwableSpwam.position, Camera.main.transform.rotation);
+        Rigidbody rb = throwable.GetComponent<Rigidbody>();
+        rb.AddForce(Camera.main.transform.forward * (throwFore * forceMultipler), ForceMode.Impulse);
+        throwable.GetComponent<Throwable>().hasBeenThrow = true;
+        granedeCount -= 1;
+        HubManager.Instance.UpdateThrowablesUI();
+    }
+
+    private GameObject GetThrowablePrefabs()
+    {
+        switch (equippedLethalType)
+        {
+            case Throwable.ThrowableType.grenade:
+                return grenadePrefabs;
+        }
+        return new();
     }
 }

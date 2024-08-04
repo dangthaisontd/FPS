@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [AddComponentMenu("DangSon/HubManager")]
 public class HubManager : MonoBehaviour
 {
-    public HubManager Instance
+    public static HubManager Instance
     {
         get => instance;
     }
@@ -16,14 +16,14 @@ public class HubManager : MonoBehaviour
     [Header("Public UI")]
     public TextMeshProUGUI magazineAmmoUI;
     public TextMeshProUGUI totalAmmoUI;
-    public TextMeshProUGUI lethalWeaponUI;
+    public TextMeshProUGUI lethalAmountUI;
     public TextMeshProUGUI taticalAmmoUI;
     public Image ammoTypeUI;
     public Image activeWeaponUI;
     public Image unActiveWeaponUI;
     public Image lethalUI;
     public Image taticalUI;
-    
+    public Slider slide;
 
     void Awake()
     {
@@ -99,5 +99,20 @@ public class HubManager : MonoBehaviour
             default:
                 return null;
         }
+    }
+     public  void UpdateThrowablesUI()
+    {
+        lethalAmountUI.text = $"{WeaponManager.Instance.granedeCount}";
+        switch (WeaponManager.Instance.equippedLethalType)
+        {
+            case Throwable.ThrowableType.grenade:
+
+                lethalUI.sprite = Resources.Load<GameObject>("Grenades").gameObject.GetComponent<SpriteRenderer>().sprite;
+                break;
+        }
+    }
+    public void UpdateSlideUI(float valueSlide)
+    {
+        slide.value = valueSlide;
     }
 }

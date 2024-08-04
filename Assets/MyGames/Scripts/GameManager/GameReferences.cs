@@ -13,6 +13,7 @@ public class GameReferences : MonoBehaviour
 
     public GameObject bulletEffectImpactPrefabs;
     public GameObject bloodEffectImpactPrefabs;
+    public GameObject granedaExplusionEffect;
     private void Awake()
     {
         if (instance != null)

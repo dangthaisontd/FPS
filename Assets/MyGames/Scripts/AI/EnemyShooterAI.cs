@@ -13,7 +13,6 @@ public class EnemyShooterAI : MonoBehaviour
     public float attackRange = 10f;
     public float faceSpeedPlayer = 100f;
     public float speedAgent = 2;
-    public float stopDistance = 8f;
     private NavMeshAgent agent;
     private Animator animator;
     private bool isAttacking = false;
@@ -97,7 +96,7 @@ public class EnemyShooterAI : MonoBehaviour
             ShoterAttack();
             Invoke("ResetAttack", 2f);
         }
-        agent.stoppingDistance = stopDistance;
+        agent.stoppingDistance = attackRange;
     }
     void ShoterAttack()
     {

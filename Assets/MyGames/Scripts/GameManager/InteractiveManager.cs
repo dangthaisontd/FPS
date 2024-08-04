@@ -5,7 +5,7 @@ using UnityEngine;
 [AddComponentMenu("DangSon/InteractiveManager")]
 public class InteractiveManager : MonoBehaviour
 {
-    public InteractiveManager Instance
+    public static InteractiveManager Instance
     {
         get => instance;
     }
@@ -13,6 +13,7 @@ public class InteractiveManager : MonoBehaviour
     [Header("Weapon")]
     public Weapon hoveredWeapon;
     public AmmoBox hoveredAmmo;
+    public Throwable hoveredThrowable;
     private void Awake()
     {
         if (instance != null)
@@ -92,8 +93,31 @@ public class InteractiveManager : MonoBehaviour
                     hoveredAmmo.GetComponent<Outline>().enabled = false;
                 }
             }
-        }
+            //Throw
+            if (objectHitRaycast.GetComponent<Throwable>())
+            {
+                if (hoveredThrowable)
+                {
+                    hoveredThrowable.GetComponent<Outline>().enabled = false;
+                }
+                hoveredThrowable = objectHitRaycast.GetComponent<Throwable>();
+                hoveredThrowable.GetComponent<Outline>().enabled = true;
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    WeaponManager.Instance.PickupThrowable(hoveredThrowable);
+                    //Destroy(objectHitbyRaycast);
+                }
+            }
+            else
+            {
+                if (hoveredThrowable)
+                {
 
+                    hoveredThrowable.GetComponent<Outline>().enabled = false;
+                }
+            }
+        }
+        
     }
     
 }
